@@ -198,7 +198,7 @@ const HomePage = () => {
                 View Projects
               </a>
               <a
-                href="/DANGNGUYENGIABAO_CV/DangNguyenGiaBao_FullStack_Developer.pdf"
+                href="/DangNguyenGiaBao_FullStack_Developer.pdf"
                 className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-sm sm:text-base font-semibold bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Download size={18} className="sm:w-5 sm:h-5" />
