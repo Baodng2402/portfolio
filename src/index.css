@@ -166,6 +166,8 @@
 .gradient-text {
   /* Fallback color for unsupported browsers */
   color: #a78bfa;
+  /* Use inline instead of inline-block to prevent clipping */
+  display: inline;
   background: var(--gradient-text);
   -webkit-background-clip: text;
   background-clip: text;
@@ -173,8 +175,18 @@
   /* Safari fix: ensure proper rendering */
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+  /* Prevent rendering issues on Safari */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   /* Force GPU acceleration for smoother rendering */
   will-change: transform;
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Add slight padding to prevent clipping */
+  padding: 0 0.1em;
+  /* Ensure proper line height */
+  line-height: 1.2;
 }
 
 /* Fallback for browsers that don't support background-clip */

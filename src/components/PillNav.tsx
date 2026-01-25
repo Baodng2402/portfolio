@@ -160,7 +160,7 @@ const PillNav: React.FC<PillNavProps> = ({
     window.addEventListener("resize", onResize);
 
     if (document.fonts) {
-      document.fonts.ready.then(layout).catch(() => {});
+      document.fonts.ready.then(layout).catch(() => { });
     }
 
     const menu = mobileMenuRef.current;
@@ -513,7 +513,12 @@ const PillNav: React.FC<PillNavProps> = ({
                     style={defaultStyle}
                     onMouseEnter={hoverIn}
                     onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                      // Close menu properly with animations
+                      if (isMobileMenuOpen) {
+                        toggleMobileMenu();
+                      }
+                    }}
                   >
                     {item.label}
                   </Link>
@@ -524,7 +529,35 @@ const PillNav: React.FC<PillNavProps> = ({
                     style={defaultStyle}
                     onMouseEnter={hoverIn}
                     onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      // For anchor links, handle smooth scrolling
+                      if (item.href.startsWith('#')) {
+                        e.preventDefault();
+
+                        // Close menu first with proper animations
+                        if (isMobileMenuOpen) {
+                          toggleMobileMenu();
+                        }
+
+                        // Then scroll to section after menu closes
+                        const targetId = item.href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        setTimeout(() => {
+                          if (targetElement) {
+                            targetElement.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'start'
+                            });
+                          }
+                        }, 300); // Match the menu closing animation duration
+                      } else {
+                        // For external links, just close the menu
+                        if (isMobileMenuOpen) {
+                          toggleMobileMenu();
+                        }
+                      }
+                    }}
                   >
                     {item.label}
                   </a>

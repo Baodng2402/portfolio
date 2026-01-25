@@ -473,7 +473,7 @@ const HomePage = () => {
             href="mailto:your.email@example.com"
             className="inline-block text-sm sm:text-base text-purple-400 hover:text-purple-300 underline underline-offset-4 mb-6 sm:mb-8"
           >
-            bao5511c@gmail.com
+            baodngworkstation@gmail.com
           </a>
 
           {/* Social Links */}
@@ -497,7 +497,7 @@ const HomePage = () => {
               <Facebook size={20} className="sm:w-6 sm:h-6" />
             </a>
             <a
-              href="mailto:bao5511c@gmail.com"
+              href="mailto:baodngworkstation@gmail.com"
               className="p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-500/50 transition-all"
             >
               <Mail size={20} className="sm:w-6 sm:h-6" />

@@ -25,7 +25,7 @@ interface TextTypeProps {
   pauseDuration?: number;
   deletingSpeed?: number;
   loop?: boolean;
-  textColors?: string[];
+
   variableSpeed?: { min: number; max: number };
   onSentenceComplete?: (sentence: string, index: number) => void;
   startOnVisible?: boolean;
@@ -46,7 +46,7 @@ const TextType = ({
   cursorCharacter = "|",
   cursorClassName = "",
   cursorBlinkDuration = 0.5,
-  textColors = [],
+
   variableSpeed,
   onSentenceComplete,
   startOnVisible = false,
@@ -72,10 +72,7 @@ const TextType = ({
     return Math.random() * (max - min) + min;
   }, [variableSpeed, typingSpeed]);
 
-  const getCurrentTextColor = () => {
-    if (textColors.length === 0) return;
-    return textColors[currentTextIndex % textColors.length];
-  };
+
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
@@ -132,7 +129,7 @@ const TextType = ({
 
           setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
-          timeout = setTimeout(() => {}, pauseDuration);
+          timeout = setTimeout(() => { }, pauseDuration);
         } else {
           timeout = setTimeout(() => {
             setDisplayedText((prev) => prev.slice(0, -1));
@@ -179,6 +176,7 @@ const TextType = ({
     isVisible,
     reverseMode,
     variableSpeed,
+    getRandomSpeed,
     onSentenceComplete,
   ]);
 
@@ -193,20 +191,19 @@ const TextType = ({
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       ...props,
     },
-    /* THAY ĐỔI TẠI ĐÂY: Sử dụng dangerouslySetInnerHTML để hỗ trợ render thẻ HTML */
-    <span
-      className="inline"
-      style={{ color: getCurrentTextColor() || "inherit" }}
-      dangerouslySetInnerHTML={{ __html: displayedText }}
-    />,
-    showCursor && (
-      <span
-        ref={cursorRef}
-        className={`ml-1 inline-block opacity-100 ${shouldHideCursor ? "hidden" : ""} ${cursorClassName}`}
-      >
-        {cursorCharacter}
+    <>
+      <span className="inline">
+        {displayedText}
       </span>
-    ),
+      {showCursor && (
+        <span
+          ref={cursorRef}
+          className={`ml-1 inline-block opacity-100 ${shouldHideCursor ? "hidden" : ""} ${cursorClassName}`}
+        >
+          {cursorCharacter}
+        </span>
+      )}
+    </>
   );
 };
 
