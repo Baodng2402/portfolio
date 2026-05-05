@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 // Stagger container variants
 export const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,7 +18,6 @@ export const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.34, 1.56, 0.64, 1], // cubic-bezier for smooth spring effect
     },
   },
 };
@@ -46,7 +43,6 @@ export const slideInVariants = {
     x: 0,
     transition: {
       duration: 0.8,
-      ease: [0.34, 1.56, 0.64, 1],
     },
   },
 };
@@ -61,7 +57,6 @@ export const scaleInVariants = {
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: [0.34, 1.56, 0.64, 1],
     },
   },
 };

@@ -5,7 +5,7 @@ import TechIcon from "@/components/TechIcon";
 import TextType from "@/components/TextType";
 import Shuffle from "@/components/Shuffle";
 import AnimatedLine from "@/components/AnimatedLine";
-import { containerVariants, itemVariants, slideInVariants, scaleInVariants, scrollAnimationProps } from "@/lib/animations";
+import { containerVariants, itemVariants, slideInVariants, scaleInVariants } from "@/lib/animations";
 import logo from "@/assets/BenLogo.png";
 import igcseLearning from "@/assets/igcse.png";
 import liveCodeExecution from "@/assets/liveCode.png";
@@ -682,19 +682,6 @@ const HomePage = () => {
                           <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-pink-400 rounded-full text-white text-[8px] flex items-center justify-center font-bold">M</span>
                         </div>
                         <span className="text-xs font-medium text-pink-400">Mobile</span>
-                      </motion.a>
-                    )}
-                    {project.links.github && (
-                      <motion.a
-                        href={project.links.github}
-                        variants={itemVariants}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        title="GitHub Repository"
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-purple-500/15 border border-white/10 hover:border-purple-500/50 transition-all"
-                      >
-                        <Github size={16} className="text-purple-400" />
-                        <span className="text-xs font-medium text-purple-400">Code</span>
                       </motion.a>
                     )}
                     {project.links.demo && (
