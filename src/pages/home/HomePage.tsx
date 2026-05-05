@@ -224,7 +224,7 @@ const HomePage = () => {
                   cursorCharacter="▎"
                   deletingSpeed={50}
                   cursorBlinkDuration={0.5}
-                  className="inline"
+                  className="inline-block min-h-[1.5em]"
                 />
               </span>
             </motion.h1>
