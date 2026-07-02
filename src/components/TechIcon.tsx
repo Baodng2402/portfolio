@@ -1,22 +1,53 @@
 interface TechIconProps {
-  icon: React.ReactNode;
+  icon?: string;
   name: string;
-  color?: string;
+  initials?: string;
+  invert?: boolean;
+  accentColor?: string;
+  size?: "sm" | "md" | "lg";
 }
 
-const TechIcon = ({ icon, name, color = "#a855f7" }: TechIconProps) => {
+const sizeMap = {
+  sm: { box: "h-10 w-10", img: "h-5 w-5", text: "text-[10px]", initials: "text-[10px]" },
+  md: { box: "h-14 w-14", img: "h-8 w-8", text: "text-xs", initials: "text-[11px]" },
+  lg: { box: "h-16 w-16", img: "h-9 w-9", text: "text-xs", initials: "text-xs" },
+};
+
+const TechIcon = ({
+  icon,
+  name,
+  initials,
+  invert = false,
+  accentColor = "#38bdf8",
+  size = "md",
+}: TechIconProps) => {
+  const s = sizeMap[size];
+
   return (
-    <div
-      className="group flex flex-col items-center gap-2 p-3 rounded-xl bg-white/15 border border-white/30 hover:border-purple-500/50 transition-all duration-300 hover:scale-110 cursor-pointer"
-      style={{ "--hover-color": color } as React.CSSProperties}
-    >
+    <div className="tech-icon group flex flex-col items-center gap-2 text-center">
       <div
-        className="text-3xl text-white/90 group-hover:text-purple-400 transition-colors duration-300"
-        style={{ color: "inherit" }}
+        className={`${s.box} flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] transition-[border-color,background-color,box-shadow,transform] duration-200 group-hover:-translate-y-0.5 group-hover:border-[var(--color-accent)]/40 group-hover:bg-white/[0.07] group-hover:shadow-[0_0_20px_var(--color-glow)]`}
       >
-        {icon}
+        {icon ? (
+          <img
+            src={icon}
+            alt={name}
+            className={`${s.img} object-contain ${invert ? "brightness-0 invert" : ""}`}
+            loading="lazy"
+          />
+        ) : (
+          <span
+            className={`${s.initials} font-bold leading-none`}
+            style={{ color: accentColor }}
+            aria-hidden
+          >
+            {initials ?? name.slice(0, 2).toUpperCase()}
+          </span>
+        )}
       </div>
-      <span className="text-xs text-white/70 group-hover:text-white/80 transition-colors">
+      <span
+        className={`${s.text} max-w-[4.75rem] font-medium leading-tight text-[var(--color-muted)] transition-colors group-hover:text-[var(--color-text)]`}
+      >
         {name}
       </span>
     </div>
