@@ -18,8 +18,8 @@
 
   --color-bg: #070b14;
   --color-bg-elevated: #0c1220;
-  --color-surface: rgba(255, 255, 255, 0.03);
-  --color-surface-elevated: #0d1526;
+  --color-surface: rgba(10, 18, 34, 0.52);
+  --color-surface-elevated: rgba(13, 21, 38, 0.62);
   --color-text: #f1f5f9;
   --color-muted: #94a3b8;
   --color-border: rgba(148, 163, 184, 0.14);
@@ -50,6 +50,14 @@
       linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
     background-size: 100% 100%, 48px 48px, 48px 48px;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  @media (max-width: 639px) {
+    body {
+      background-size: 100% 100%, 32px 32px, 32px 32px;
+    }
   }
 
   h1,
@@ -81,11 +89,15 @@
 }
 
 .section-wrap {
-  @apply py-20 md:py-28;
+  @apply py-14 sm:py-20 md:py-28;
+}
+
+.page-px {
+  @apply px-4 sm:px-6;
 }
 
 .section-elevated {
-  background: linear-gradient(180deg, var(--color-bg-elevated) 0%, var(--color-bg) 100%);
+  background: linear-gradient(180deg, rgba(12, 18, 32, 0.56) 0%, rgba(7, 11, 20, 0.28) 100%);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
@@ -107,14 +119,14 @@
 }
 
 .section-label {
-  @apply mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-accent)];
+  @apply mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--color-accent)] sm:text-xs sm:tracking-[0.16em];
   font-family: var(--font-mono);
 }
 
 .typewriter {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.05em;
+  display: inline;
+  max-width: 100%;
+  word-break: break-word;
 }
 
 .typewriter-cursor {
@@ -124,7 +136,7 @@
 }
 
 .glass-card {
-  background: var(--color-surface);
+  background: rgba(10, 18, 34, 0.44);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   backdrop-filter: blur(12px);
@@ -139,7 +151,12 @@
 .glass-card:hover {
   border-color: rgba(56, 189, 248, 0.25);
   box-shadow: var(--shadow-md), var(--shadow-glow);
-  transform: translateY(-2px);
+}
+
+@media (hover: hover) {
+  .glass-card:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .featured-card {
@@ -149,11 +166,11 @@
 
 .project-image-frame {
   @apply flex items-center justify-center border-b border-[var(--color-border)] p-4;
-  background: linear-gradient(180deg, var(--color-surface-elevated) 0%, var(--color-bg-elevated) 100%);
+  background: linear-gradient(180deg, rgba(16, 26, 45, 0.62) 0%, rgba(8, 14, 26, 0.44) 100%);
 }
 
 .terminal-card {
-  background: var(--color-surface);
+  background: rgba(9, 16, 31, 0.5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -161,15 +178,15 @@
 }
 
 .tag {
-  @apply inline-flex items-center rounded-md border px-2.5 py-1 text-[11px] font-medium;
+  @apply inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-medium sm:px-2.5 sm:py-1 sm:text-[11px];
   border-color: var(--color-border);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(148, 163, 184, 0.12);
   color: var(--color-muted);
   font-family: var(--font-mono);
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold no-underline cursor-pointer;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold no-underline cursor-pointer sm:min-h-0 sm:px-5;
   background: linear-gradient(135deg, var(--color-accent-dim) 0%, var(--color-accent) 100%);
   color: #0b1120;
   transition:
@@ -193,9 +210,9 @@
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-lg border px-5 py-2.5 text-sm font-semibold no-underline cursor-pointer;
+  @apply inline-flex min-h-11 items-center justify-center rounded-lg border px-4 py-2.5 text-sm font-semibold no-underline cursor-pointer sm:min-h-0 sm:px-5;
   border-color: var(--color-border);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(148, 163, 184, 0.12);
   color: var(--color-text);
   transition:
     background-color 200ms ease,
@@ -244,6 +261,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-border);
   background: transparent;

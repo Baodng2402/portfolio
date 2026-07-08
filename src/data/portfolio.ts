@@ -72,6 +72,16 @@ export const featuredProjects: ProjectItem[] = [
     },
   },
   {
+    image: "/banh-mi-nhu-y.png",
+    title: "Bánh Mì Như Ý",
+    description:
+      "Online ordering platform for a bakery brand — product menu, cart, checkout, payments, and live order tracking.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "SignalR"],
+    links: {
+      demo: "https://banhminhuy.vn",
+    },
+  },
+  {
     image: "/ev-station.png",
     title: "EV Station Rental",
     description:
@@ -95,7 +105,10 @@ export const featuredProjects: ProjectItem[] = [
     description:
       "Sandboxed remote code runner with Docker isolation and multi-language support.",
     tags: ["Node.js", "Docker", "WebSocket", "PostgreSQL"],
-    links: { github_web: "https://github.com/Baodng2402/Live_Code_Execution" },
+    links: {
+      github_web: "https://github.com/Baodng2402/Live_Code_Execution",
+      demo: "https://live-code-execution.vercel.app/",
+    },
   },
 ];
 

@@ -16,7 +16,7 @@ const Section = ({ id, children, className = "", variant = "default" }: SectionP
 
   return (
     <section id={id} className={`section-wrap ${variants[variant]} ${className}`}>
-      <div className="mx-auto max-w-6xl px-6">{children}</div>
+      <div className="page-px mx-auto max-w-6xl">{children}</div>
     </section>
   );
 };

@@ -15,7 +15,7 @@ const socialLinks = [
 
 const ContactSection = () => {
   return (
-    <Section id="contact" variant="elevated" className="!pb-24">
+    <Section id="contact" variant="elevated" className="!pb-16 sm:!pb-24">
       <div className="mx-auto max-w-2xl text-center">
         <SectionHeader
           label="Contact"
@@ -26,12 +26,12 @@ const ContactSection = () => {
 
         <a
           href="mailto:baodngworkstation@gmail.com"
-          className="contact-reveal mt-8 inline-block font-mono text-base text-[var(--color-accent)] underline underline-offset-4 transition-colors hover:text-[var(--color-accent-hover)] sm:text-lg"
+          className="contact-reveal mt-6 inline-block max-w-full break-all px-1 font-mono text-sm text-[var(--color-accent)] underline underline-offset-4 transition-colors hover:text-[var(--color-accent-hover)] sm:mt-8 sm:text-base md:text-lg"
         >
           baodngworkstation@gmail.com
         </a>
 
-        <div className="contact-reveal mt-8 flex flex-wrap justify-center gap-3">
+        <div className="contact-reveal mt-6 flex flex-wrap justify-center gap-2.5 sm:mt-8 sm:gap-3">
           {socialLinks.map(({ href, label, icon: Icon }) => (
             <a
               key={href}
@@ -39,9 +39,9 @@ const ContactSection = () => {
               target={href.startsWith("mailto:") ? undefined : "_blank"}
               rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
               aria-label={label}
-              className="icon-btn"
+              className="icon-btn !p-2.5 sm:!p-3"
             >
-              <Icon size={20} aria-hidden />
+              <Icon className="h-[18px] w-[18px] sm:h-5 sm:w-5" aria-hidden />
             </a>
           ))}
         </div>

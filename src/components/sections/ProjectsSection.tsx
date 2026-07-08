@@ -14,7 +14,7 @@ const ProjectsSection = () => {
         description="Selected work across SaaS, mobile, and full-stack products."
       />
 
-      <div className="mt-12 space-y-6">
+      <div className="mt-8 space-y-4 sm:mt-12 sm:space-y-6">
         <ProjectCard project={featured} featured />
 
         <div className="grid gap-6 md:grid-cols-2 md:items-stretch">

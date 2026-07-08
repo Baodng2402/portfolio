@@ -4,6 +4,7 @@ import WorkSection from "@/components/sections/WorkSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import HeroCanvas from "@/components/three/HeroCanvas";
 import { usePageAnimations } from "@/animations/usePageAnimations";
 
 const HomePage = () => {
@@ -12,21 +13,24 @@ const HomePage = () => {
   return (
     <div
       ref={pageRef}
-      className="min-h-dvh overflow-x-hidden bg-[var(--color-bg)] text-[var(--color-text)]"
+      className="relative min-h-dvh overflow-x-hidden bg-[var(--color-bg)] text-[var(--color-text)]"
     >
-      <SiteNav />
+      <HeroCanvas className="fixed inset-0" />
+      <div className="relative z-10">
+        <SiteNav />
 
-      <main>
-        <HeroSection />
-        <WorkSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
+        <main>
+          <HeroSection />
+          <WorkSection />
+          <SkillsSection />
+          <ProjectsSection />
+          <ContactSection />
+        </main>
 
-      <footer className="border-t border-[var(--color-border)] py-8 text-center text-sm text-[var(--color-muted)]">
-        © 2026 Bao. All rights reserved.
-      </footer>
+        <footer className="page-px border-t border-[var(--color-border)] py-6 text-center text-xs text-[var(--color-muted)] sm:py-8 sm:text-sm">
+          © 2026 Bao. All rights reserved.
+        </footer>
+      </div>
     </div>
   );
 };
